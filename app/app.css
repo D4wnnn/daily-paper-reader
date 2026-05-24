@@ -4428,11 +4428,29 @@ article.markdown-section {
   display: flex;
   gap: 4px;
   align-items: flex-start;
-  transition: border-color 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+  transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease, background-color 0.14s ease;
 }
 
-.dpr-cloud-item:hover {
-  border-color: #a9bddf;
+.dpr-cloud-item:not(.dpr-choice-disabled):not(.dpr-cloud-item-editing):hover {
+  transform: translateY(-2px);
+  border-color: #82a8e8;
+  background: linear-gradient(180deg, #fafdff 0%, #eef6ff 100%);
+  box-shadow: 0 8px 18px rgba(73, 118, 190, 0.16);
+}
+
+.dpr-cloud-item:not(.dpr-choice-disabled):not(.dpr-cloud-item-editing):hover::after {
+  content: '点击选择';
+  position: absolute;
+  right: 38px;
+  bottom: 7px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(47, 95, 159, 0.1);
+  color: #2f5f9f;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  pointer-events: none;
 }
 
 .dpr-cloud-item.dpr-choice-disabled,
@@ -4445,13 +4463,27 @@ article.markdown-section {
 
 .dpr-cloud-item.dpr-choice-disabled:hover,
 .dpr-pick-card.dpr-choice-disabled:hover {
+  transform: none;
   border-color: #d7deea;
+  box-shadow: none;
 }
 
 .dpr-cloud-item.selected {
   border-color: #57a86a;
   background: #f2fcf4;
   box-shadow: 0 0 0 1px rgba(87, 168, 106, 0.2);
+}
+
+.dpr-cloud-item.selected:not(.dpr-choice-disabled):not(.dpr-cloud-item-editing):hover {
+  border-color: #3f9955;
+  background: linear-gradient(180deg, #f4fff6 0%, #e8f8ed 100%);
+  box-shadow: 0 8px 18px rgba(63, 153, 85, 0.18);
+}
+
+.dpr-cloud-item.selected:not(.dpr-choice-disabled):not(.dpr-cloud-item-editing):hover::after {
+  content: '已选择';
+  background: rgba(63, 153, 85, 0.12);
+  color: #26743a;
 }
 
 .dpr-cloud-item.selected .dpr-cloud-item-title,
